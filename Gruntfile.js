@@ -4,10 +4,13 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   var pkg_config = grunt.file.readJSON('wp/wp-content/themes/tcs-responsive/config/script-register.json');
+  var external_app_config = grunt.file.readJSON('wp/wp-content/themes/tcs-responsive/config/external-apps.json');
   
   var dependencies = grunt.file.read('src/dependencies.html');
   var analytics = grunt.file.read('src/analytics.html');
   var header = grunt.file.read('src/header.html');
+  var headernew = grunt.file.read('src/headernew.html');
+  var commonhead = grunt.file.read('src/head.html');
   var footer = grunt.file.read('src/footer.html');
 
   function addBaseFilePath(files, base) {
@@ -24,6 +27,7 @@ module.exports = function(grunt) {
   var tmp = 'tmp';
   var srcCSS = src + '/css/';
   var srcJS = src + '/js/';
+  var extApps = 'apps';
 
   var tcconfig = {
     auth0ClientID: grunt.option('auth-client-id') || '6ZwZEUo2ZK4c50aLPpgupeg5v2Ffxp9P',
@@ -31,7 +35,7 @@ module.exports = function(grunt) {
     auth0LDAP: grunt.option('auth-ldap') || 'LDAP',
     auth0URL: grunt.option('auth-main-url') || 'topcoder.auth0.com',
     mainURL: grunt.option('main-url') || 'http://local.topcoder.com',
-    apiURL: grunt.option('api-url') || 'https://api.topcoder.com/v2',
+    apiURL: grunt.option('api-url') || 'https://api.topcoder-dev.com/v2',
     cdnURL: grunt.option('cdn-url') || '/mf',
     useVer: grunt.option('use-ver') || false,
     version: grunt.option('cdn-version') || '',
@@ -50,7 +54,7 @@ module.exports = function(grunt) {
     myFiltersURL: grunt.option('my-filters-url') || '//lc1-user-settings-service.herokuapp.com',
     cbURL: grunt.option('cb-url') || 'https://coderbits.com',
 
-    blogRSSFeedURL: grunt.option('blog-rss-feed') || 'https://www.topcoder.com/feed/?post_type=blog',
+    blogRSSFeedURL: grunt.option('blog-rss-feed') || 'http://local.topcoder.com/feed/?post_type=blog',
     photoLinkBaseURL: grunt.option('photo-link-base') || 'http://community.topcoder.com',
 
     marketingMessageMyDashURL: grunt.option('marketing-message-my-dash-url') || 'https://banners-r-us.herokuapp.com/serve?size=650x150'
@@ -122,6 +126,8 @@ module.exports = function(grunt) {
     }
 
     header = globalRepls(header);
+    headernew = globalRepls(headernew);
+    commonhead = globalRepls(commonhead);
     footer = globalRepls(footer);
 
     for (var name in pkg_config.packages) {
@@ -164,6 +170,51 @@ module.exports = function(grunt) {
         };
       }
     }
+    for (var name in external_app_config.apps) {
+      var app = external_app_config.apps[name];
+      if (app.name) {
+        var css = "";
+        var scripts = "";
+        var ts = new Date().getTime();
+        app.css.forEach(function(cssPath) {
+          css += "<link rel='stylesheet' href='" + cdnPrefix + "/css/" + cssPath + "?ver=" + ts + "' type='text/css' media='all' />";
+        });
+        app.js.forEach(function(jsPath) {
+          scripts += "<script type='text/javascript' src='" + cdnPrefix + "/js/" + jsPath + "?ver=" + ts + "'></script>";
+        });
+        var head = '';
+
+        var htmls = [];
+        for (var html in app.html) {
+          htmls.push({
+            src: ['<%= build.extApps %>/' + app.name + '/' + app.html],
+            dest: '<%= build.extApps %>/' + app.name + '/' + app.html
+          });
+        }
+        console.log("VIKAS");
+        console.log(htmls);
+        replaces[name] = {
+          options: {
+            patterns: [
+              {
+                match: 'header',
+                replacement: headernew.replace('@@css', css).replace('@@head', head)
+              },
+              {
+                match: 'footer',
+                replacement: footer.replace('@@scripts', scripts)
+              },
+              {
+                match: 'commonhead',
+                replacement: commonhead.replace('@@css', css).replace('@@head', head).replace('@@scripts', scripts)
+              }
+            ]
+          },
+          files: htmls
+        };
+        console.log(replaces[name]);
+      }
+    }
   });
 
   // wp config.json file based on same settings
@@ -184,6 +235,7 @@ module.exports = function(grunt) {
       tmp: tmp,
       srcJs: srcJS,
       srcCss: srcCSS,
+      extApps: extApps
     },
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +

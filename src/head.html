@@ -1,0 +1,81 @@
+<meta charset="utf-8">
+<meta name="fragment" content="!">
+<meta name="author" content="@topcoder" >
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--[if lt IE 9]>
+<script src="/js/html5shiv.js" type="text/javascript"></script>
+<script src="/js/respond.min.js" type="text/javascript"></script>
+<script src="/js/modernizr.js" type="text/javascript"></script>
+<link rel = "stylesheet" href = "/css/ie.css ? v = 201407282" / >
+<![endif]-->
+<script type="text/javascript">
+  // UNIVERSAL
+  var tcconfig = @@tcconfig
+
+  var isLC = '';
+  var sslAjax = true;
+  var wpUrl  = tcconfig.mainURL;
+  var ajaxUrl = tcconfig.mainURL + "/wp-admin/admin-ajax.php";
+
+  var tcApiRUL = tcconfig.apiURL;
+  var lcDiscussionURL = tcconfig.lcDiscussionURL;
+  var myFiltersURL = tcconfig.myFiltersURL;
+  var lcSiteUrl = tcconfig.lcSiteUrl;
+  var lcExternalUrl = tcconfig.lcURL;
+  var lcUserUrl = tcconfig.lcUserURL;
+
+  var siteURL = tcconfig.mainURL;
+  var communityURL = tcconfig.communityURL;
+  
+  var base_url = tcconfig.mainURL + '/wp-content/themes/tcs-responsive'; // can use '' ?
+  var stylesheet_dir = tcconfig.mainURL + '/wp-content/themes/tcs-responsive/css';
+  var timezone_string = "America/New_York";
+  var challengeType = 'develop';
+
+  var tcLCApiURL;
+  if (isLC) {
+    tcLCApiURL = lcURL;
+  } else {
+    tcLCApiURL = tcApiRUL;
+  }
+  var cbApiURL = tcconfig.cbURL;
+
+  window.prerenderReady = false;
+  
+  function getParameterByName(name, source) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(source || location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  function getHashParameterByName(name, source) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\#&]" + name + "=([^&#]*)"),
+    results = regex.exec(source || location.hash);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+
+  // CHALLENGE DETAILS
+  var autoRegister = getParameterByName('autoRegister');
+</script>
+
+<!-- HARDCODED FOR NOW -->
+<link rel="shortcut icon" href="//www.topcoder.com/wp-content/themes/tcs-responsive/favicon.ico" />
+
+<!-- GOT TO GO, CHINA CAN"T SEE THIS -->
+<link rel='stylesheet' id='fonts-css'  href='//fonts.googleapis.com/css?family=Source+Sans+Pro%3A700%2C600%2C400%2C400italic%2C300&#038;ver=3.9.1' type='text/css' media='all' />
+
+@@css
+
+<meta name="google-site-verification" content="13nbPcn6VRWD2zdq-CEG0LbT00aOwSyhofA3OAEmbEI" />
+<meta name="google-site-verification" content="p0OVxcrMQ2HYDsGgaRLRS9bsXuXmjKVcTGZnXNphIUI" />
+
+<style>
+  .btn, a.btn, .blogCategoryMenu a, .searchBox input, .subscribeBox input {
+    behavior: url("/wp-content/themes/tcs-responsive/css/PIE.htc");
+  }
+</style>
+
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
