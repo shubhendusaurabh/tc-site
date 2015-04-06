@@ -4,7 +4,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   var pkg_config = grunt.file.readJSON('wp/wp-content/themes/tcs-responsive/config/script-register.json');
-  var external_app_config = grunt.file.readJSON('wp/wp-content/themes/tcs-responsive/config/external-apps.json');
+  var external_app_config = grunt.file.readJSON('src/conf/external-apps.json');
   
   var dependencies = grunt.file.read('src/dependencies.html');
   var analytics = grunt.file.read('src/analytics.html');
@@ -191,8 +191,6 @@ module.exports = function(grunt) {
             dest: '<%= build.extApps %>/' + app.name + '/' + app.html
           });
         }
-        console.log("VIKAS");
-        console.log(htmls);
         replaces[name] = {
           options: {
             patterns: [
@@ -212,7 +210,6 @@ module.exports = function(grunt) {
           },
           files: htmls
         };
-        console.log(replaces[name]);
       }
     }
   });
