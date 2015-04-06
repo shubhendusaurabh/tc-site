@@ -1,0 +1,31 @@
+location ~ ^/peer-reviews/\d+/ {
+    index /peer-reviews/index.html;          
+}
+
+location = /peer-reviews/index.html {
+    root /home/vagrant/tc-site/apps;
+}
+
+location ~ ^/peer-reviews/scripts/ {
+    root /home/vagrant/tc-site/apps;
+}
+
+location ~ ^/peer-reviews/content/css/ {
+    root /home/vagrant/tc-site/apps;
+}
+
+location ~ ^/peer-reviews/views/ {
+    root /home/vagrant/tc-site/apps;
+}
+
+location ~ ^/peer-reviews/review/ {
+    root /home/vagrant/tc-site/apps;
+}
+
+location ~ ^/peer-reviews/scorecard/ {
+    root /home/vagrant/tc-site/apps;
+}
+
+location ~ ^/peer-reviews/review-status/ {
+    root /home/vagrant/tc-site/apps;
+}
