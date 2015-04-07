@@ -54,7 +54,7 @@ module.exports = function(grunt) {
     myFiltersURL: grunt.option('my-filters-url') || '//lc1-user-settings-service.herokuapp.com',
     cbURL: grunt.option('cb-url') || 'https://coderbits.com',
 
-    blogRSSFeedURL: grunt.option('blog-rss-feed') || 'https://wwww.topcoder.com/feed/?post_type=blog',
+    blogRSSFeedURL: grunt.option('blog-rss-feed') || 'https://www.topcoder.com/feed/?post_type=blog',
     photoLinkBaseURL: grunt.option('photo-link-base') || 'http://community.topcoder.com',
 
     marketingMessageMyDashURL: grunt.option('marketing-message-my-dash-url') || 'https://banners-r-us.herokuapp.com/serve?size=650x150'
