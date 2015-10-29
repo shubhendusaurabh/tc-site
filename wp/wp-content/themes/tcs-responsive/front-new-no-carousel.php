@@ -3,11 +3,11 @@
  * Template Name: New Home - No Promo Banner
  */
 ?>
-<?php 
+<?php
 if ( strpos($_SERVER["REQUEST_URI"],'blog') !== false ):
 	include ('page-blog.php');
 ?>
-<?php 
+<?php
 elseif ( strpos($_SERVER["REQUEST_URI"],'search') !== false ):
 	$pageNumber = 1;
 	if(preg_match("/\/page\/(\d+)\/?(\?s=.*)?$/", $_SERVER["REQUEST_URI"])){
@@ -16,7 +16,7 @@ elseif ( strpos($_SERVER["REQUEST_URI"],'search') !== false ):
 	$searchKey = $_GET["s"];
 	include ('search-results.php');
 ?>
-<?php 
+<?php
 else:
 ?>
 <?php get_header(); ?>
@@ -30,29 +30,27 @@ else:
  }
 ?>
 
-<?php 
+<?php
 global $activity;
-//$activity = get_activity_summary();
+$activity = get_activity_summary();
+
 ?>
-<div class="content">
+<div class="content front-new">
 
-	<div class="article">
-		
-		<?php					
-			if (have_posts ()) :
-				while ( have_posts () ) : 
-					the_post ();
-					the_content();
-				endwhile;
-			endif;
-			wp_reset_query();
-		?>
-		
-	</div>
-	<!-- /.article -->
 
+	<?php
+		if (have_posts ()) :
+			while ( have_posts () ) :
+				the_post ();
+				the_content();
+			endwhile;
+		endif;
+		wp_reset_query();
+	?>
+</div>
+<!-- content  -->
 <?php get_footer(); ?>
 
-<?php 
+<?php
 endif;
 ?>

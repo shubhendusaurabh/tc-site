@@ -141,7 +141,7 @@
     }
 
 .challenges .box p {
-	margin: 16px 0;	
+	margin: 16px 0;
 }
 	.challenges .box p a {
 		text-decoration: none;
@@ -211,7 +211,7 @@
         margin-bottom: 20px;
         padding: 0;
     }
-	
+
 	.bottom-nav .box .follow-us{
 		margin: 5px 0 16px;
 	}
@@ -344,4 +344,204 @@ br.display {
     .challenges h2 {
         font-size: 18px;
     }
+}
+
+/* Front page */
+.front-new .splitLayout {
+  margin: 20px -60px;
+  padding: 60px;
+  background: #fff
+}
+.front-new .splitLayout .grid-3-1.p-spacing .community-box {
+  padding: 50px;
+  border: 1px solid #DEDDDD;
+  height: 85px;
+  margin-bottom: 0;
+}
+.front-new .splitLayout .grid-3-1.p-spacing.design .community-box {
+  border-bottom: 5px solid #21B2F1;
+}
+.front-new .splitLayout .grid-3-1.p-spacing.develop .community-box {
+  border-bottom: 5px solid #05C14F;
+}
+.front-new .splitLayout .grid-3-1.p-spacing.data .community-box {
+  border-bottom: 5px solid #FC9A00;
+}
+.front-new .splitLayout .grid-3-1.p-spacing h3.text-center {
+  padding: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 32px;
+}
+.front-new .member-quote {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  background: #f6f6f6;
+  height: 228px;
+}
+.front-new .member-image-container {
+  margin-bottom: 15px;
+}
+.front-new .member-image-container .member-image {
+  width: 48px;
+  height: 48px;
+}
+.front-new .member-quote .member-text p {
+  margin: 0;
+  padding: 0;
+  font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  color: #979797;
+  text-align: center;
+}
+.front-new .text-heading {
+  color: #4A4A4A;
+}
+.front-new .member-quote .member-text {
+  padding: 5px;
+}
+.front-new .member-quote .member-text .text-member-link {
+  padding-top: 20px;
+}
+.front-new .member-quote .member-text .text-member-link .text-link {
+  font-size: 15px;
+  line-height: 18px;
+  color: #000;
+  font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+.front-new .bottom-header {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  font-size: 22px;
+  line-height: 22px;
+  color: #4A4A4A;
+  font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+.front-new .testimonials h2 {
+  font-size: 36px;
+  line-height: 40.5px;
+  color: #4a4a4a;
+  font-weight: 600;
+  text-transform: none;
+}
+.front-new .testimonials .testimony-text, .front-new .testimonials .testimony-by {
+  font-size: 18px;
+  line-height: 20.3px;
+  color: #626262;
+  font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
+}
+.front-new .testimonials .testimony-text {
+  padding: 10px 140px;
+}
+.front-new .testimonials .testimony-by {
+  font-weight: 600;
+}
+.front-new h2 {
+  font-size: 38px;
+  line-height: 38px;
+  color: #4a4a4a;
+  text-transform: none;
+  font-weight: 600;
+}
+.front-new .featured {
+  background: url(@@cdn/i/section-image.jpg) center center no-repeat;
+  background-size: cover;
+  height: 400px;
+}
+.front-new .featured h2 {
+  margin-top: 0;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+.front-new .featured .prizePurse {
+  font-family: "Sofia Pro", Helvetica, Arial, sans-serif;
+  font-size: 62px;
+  line-height: 50px;
+  color: #05C14F;
+  font-weight: 600;
+}
+.front-new .featured .prizePurse .dollar {
+  font-size: 33px;
+  line-height: 40px;
+  vertical-align: top;
+}
+.front-new .featured .prizePurseSummary {
+  font-size: 18px;
+  line-height: 40px;
+  color: #9B9B9B;
+  font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
+}
+.front-new .featured p.text-center {
+  padding-top: 90px;
+}
+.front-new .btn-link {
+  font-size: 18px;
+  line-height: 20px;
+  font-family: "Sofia Pro", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.front-new .first-title {
+  font-size: 54px;
+  line-height: 54px;
+  color: #7D939E;
+  font-family: "Sofia Pro", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0;
+}
+.front-new .totalPurse {
+  color: #21B2F1;
+  font-size: 42px;
+  line-height: 52px;
+  font-family: "Sofia Pro", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.front-new .totalPurseSummary {
+  font-size: 17px;
+  line-height: 22px;
+  color: #5F5F5F;
+  font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  margin-top: 0;
+  padding-bottom: 35px;
+  font-weight: 600;
+}
+.front-new .top-promo {
+  background: url(@@cdn/i/header-image.jpg) no-repeat center center scroll;
+  background-size: cover;
+  width: 100%;
+  height: 450px;
+  margin: 0;
+  padding: 0;
+}
+.front-new .logo-container {
+  padding: 20px;
+}
+.front-new .tc-logo {
+  width: 250px;
+}
+.front-new .login {
+  float: right;
+  font-size: 16px;
+  line-height: 16px;
+  color: #0096FF;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  padding-top: 15px;
+  text-decoration: underline;
+}
+/* To hide header on front page */
+.header-wrapper {
+  display: none;
+}
+.header-wrapper.menu-visible {
+  display: block;
 }
