@@ -1940,6 +1940,44 @@ var blueprints = {
 $(document).ready(function() {
   app.init();
   app.initEvents();
+  if ($('.stat-count').length) {
+    $('.totalPurse').show();
+    $(".stat-count").each(function() {
+      var statCountEl = $(this);
+      var countTo = parseInt(statCountEl.html());
+      var currentCount = 0;
+      var countBy = 187654;
+      statCounter();
+      function statCounter() {
+        currentCount = currentCount + countBy;
+        if (currentCount > countTo) {
+            statCountEl.html(addCommas(countTo));
+        } else {
+          statCountEl.html(addCommas(currentCount));
+          setTimeout(function() {
+            statCounter();
+          }, 5);
+        }
+      }
+      return false;
+    });
+  }
+  function addCommas(nStr) {
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+      x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+  }
+  function removeCommas(aNum) {
+    aNum=aNum.replace(/,/g,"");
+    aNum=aNum.replace(/\s/g,"");
+    return aNum;
+  }
 });
 
 function secondsToString(seconds) {
