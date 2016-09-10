@@ -89,6 +89,7 @@
 
     // Methods
     vm.registerToChallenge = registerToChallenge;
+    vm.unregisterToChallenge = unregisterToChallenge;
 
     // functions
     $scope.round = Math.round;
@@ -225,6 +226,31 @@
     };
 
     /**
+     * Register to challenge
+     */
+    function unregisterToChallenge() {
+
+      if (app.isLoggedIn()) {
+        ChallengeService
+            .unregisterToChallenge(challengeId)
+            .then(
+            function (data) {
+              if (data["message"] === "ok") {
+                showModal("#unregisterSuccess");
+                updateChallengeDetail();
+              }
+            }, function (reason) {
+              if (reason["error"]["details"]) {
+                showError(reason["error"]["details"]);
+              } else {
+                  showError(reason);
+              }
+            }
+        );
+      }
+
+    };
+    /**
      *
      * @param template
      * @returns {string}
@@ -303,7 +329,7 @@
     vm.challenge.url = window.location.href;
 
     // If is not registered, then enable registration
-    if (((moment(challenge.phases[0].scheduledStartTime)) < moment() && (moment(challenge.registrationEndDate)) > moment()) && regList.indexOf(handle) == -1 && challenge.currentStatus == 'Active') {
+    if (((moment(challenge.phases[0].scheduledStartTime)) < moment() && (moment(challenge.registrationEndDate)) > moment()) && challenge.currentStatus == 'Active') {
       vm.challenge.registrationDisabled = false;
     }
 

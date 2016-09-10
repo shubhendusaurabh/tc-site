@@ -247,6 +247,31 @@
     /**
      *
      * @param id
+     * @returns {promise}
+     */
+    service.unregisterToChallenge = function(id) {
+      var defer = $q.defer();
+
+      var tcjwt = getCookie('tcjwt');
+      if (!tcjwt) {
+        defer.resolve({'error':{'details':'Internal error. Try to login again.'}});
+      }
+
+      service
+        .one('challenges', id)
+        .post('unregister')
+        .then(function(response) {
+          defer.resolve(response);
+        }, function(reason) {
+          defer.reject(reason['data']);
+        });
+
+      return defer.promise;
+    };
+
+    /**
+     *
+     * @param id
      * @param challengeType
      * @returns {promise}
      */

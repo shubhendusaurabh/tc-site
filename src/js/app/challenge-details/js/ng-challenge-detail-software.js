@@ -180,11 +180,7 @@ $(function () {
     }
   });
 
-  $("#registerFailed .closeModalReg").click(function () {
-    closeModal();
-  });
-
-  $("#registerSuccess .closeModalReg").click(function () {
+  $(".closeModalReg").click(function () {
     closeModal();
   });
 
